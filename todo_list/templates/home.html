@@ -4,11 +4,23 @@
 
 {% block content %}
     {% if all_items %}
-        <ul>
+        <table class="table table-bordered">
         {% for item in all_items %}
-            <li>{{ item.item }} | {{ item.completed }}</li>
+            {% if item.completed %}
+                <tr class="table-secondary">
+                    <td class="striker"> {{ item.item }} </td>
+                    <td><center>{{ item.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td> {{ item.item }} </td>
+                    <td><center>{{ item.completed }}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% endif %}
         {% endfor %}
-        </ul>
+        </table>
     {% endif %}
 {% endblock %}
 
